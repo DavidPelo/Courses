@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <ol>
+        <li>Add A button which says 'Display Details'</li>
+        <li>
+          Add a paragraph with any content of your choice (e.g. 'Secret Password
+          = tuna')
+        </li>
+        <li>
+          Toggle the displaying of that paragraph with the button created in the
+          first step
+        </li>
+        <li>
+          Log all button clicks in an array and output that array below the
+          secret paragraph (maybe log a timestamp or simply an incrementing
+          number)
+        </li>
+        <li>
+          Starting at the 5th log item, give all future log items a blue
+          background (via ngStyle) and white color (ngClass)
+        </li>
+      </ol>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <button type="button" class="btn btn-primary" (click)="onShowDetails()">
+        display details
+      </button>
+      <p *ngIf="showDetails">
+        I'm baby bitters microdosing +1, shaman sriracha 90's brunch pork belly
+        chambray lo-fi seitan poke banh mi. Shabby chic shaman edison bulb,
+        ramps street art air plant paleo four loko food truck semiotics
+        pinterest banh mi bitters. Mumblecore waistcoat blog fanny pack. Poke
+        venmo banjo offal, austin vice photo booth bitters organic vegan. You
+        probably haven't heard of them letterpress readymade kale chips,
+        snackwave coloring book hashtag copper mug cronut cold-pressed yuccie.
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <p
+        *ngFor="let click of clicks; let i = index"
+        [ngStyle]="{ backgroundColor: i >= 4 ? 'blue' : 'transparent' }"
+        [ngClass]="{ whiteText: i >= 4 }"
+        >
+        {{ click }}
+      </p>
+    </div>
+  </div>
+</div>

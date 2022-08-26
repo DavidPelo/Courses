@@ -1,0 +1,6 @@
+<label>input username</label>
+<br>
+<input type="text" (input)="onUsernameInput($event)" [(ngModel)]="username">
+<button [disabled]="username === ''" (click)="onUsernameSubmit()">Submit</button>
+<br>
+<p>{{ username }}</p>
