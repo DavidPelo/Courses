@@ -13,10 +13,10 @@ import { ShoppingEditComponent } from "./shopping-list/shopping-edit/shopping-ed
 import { DropdownDirective } from "./shared/dropdown.directive";
 import { ShoppingListService } from "./services/shopping-list.service";
 import { AppRoutingModule } from "./app-routing.module";
-import { RecipeStartComponent } from './recipe-start/recipe-start.component';
-import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { RecipeStartComponent } from "./recipe-start/recipe-start.component";
+import { RecipeEditComponent } from "./recipes/recipe-edit/recipe-edit.component";
 import { RecipesService } from "./services/recipes.service";
-
+import { HttpClientModule } from "@angular/common/http";
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +31,13 @@ import { RecipesService } from "./services/recipes.service";
     RecipeStartComponent,
     RecipeEditComponent,
   ],
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, AppRoutingModule],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+  ],
   providers: [ShoppingListService, RecipesService],
   bootstrap: [AppComponent],
 })
