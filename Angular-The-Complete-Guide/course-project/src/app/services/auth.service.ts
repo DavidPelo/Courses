@@ -127,6 +127,8 @@ export class AuthService {
       return throwError(errorMessage);
     }
 
+    console.log(errorRes.error.error.message)
+
     switch (errorRes.error.error.message) {
       case "EMAIL_EXISTS":
         errorMessage = "This email already exists";
@@ -134,7 +136,7 @@ export class AuthService {
       case "EMAIL_NOT_FOUND":
         errorMessage = "This email is not regiestered. Please sign up.";
         break;
-      case "PASSWORD_INVALID":
+      case "INVALID_PASSWORD":
         errorMessage = "The password entered is not valid. Please try again.";
         break;
     }
