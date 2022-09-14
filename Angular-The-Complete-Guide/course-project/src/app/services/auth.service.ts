@@ -4,6 +4,7 @@ import { catchError, tap } from "rxjs/operators";
 import { BehaviorSubject, Subject, throwError } from "rxjs";
 import { User } from "../auth/user.model";
 import { Router } from "@angular/router";
+import { environment } from "../../environments/environment";
 
 export interface AuthResponseData {
   kind: string;
@@ -25,7 +26,7 @@ export class AuthService {
   singup(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=AIzaSyBJ48MmXfZndJCVTp2Uhb0BnW_jFcjOpQM",
+        "https://www.googleapis.com/identitytoolkit/v3/relyingparty/signupNewUser?key=" + environment.firebaseApiKey,
         { email: email, password: password, returnSecureToken: true }
       )
       .pipe(
@@ -44,7 +45,7 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http
       .post<AuthResponseData>(
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyBJ48MmXfZndJCVTp2Uhb0BnW_jFcjOpQM",
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=" + environment.firebaseApiKey,
         { email: email, password: password, returnSecureToken: true }
       )
       .pipe(
@@ -127,7 +128,7 @@ export class AuthService {
       return throwError(errorMessage);
     }
 
-    console.log(errorRes.error.error.message)
+    console.log(errorRes.error.error.message);
 
     switch (errorRes.error.error.message) {
       case "EMAIL_EXISTS":
